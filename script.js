@@ -14,7 +14,8 @@ function drawImage() {
 	ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
 	ctx.font = '70px Alex Brush'
 	ctx.fillStyle = '#13640a'
-	ctx.fillText(nameInput.value, 240, 300)
+    var textWidth = ctx.measureText(nameInput.value).width;
+	ctx.fillText(nameInput.value, (canvas.width/2) - (textWidth / 2), 300);
 	ctx.imageSmoothingEnabled = false;
 }
 
