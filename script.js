@@ -9,6 +9,14 @@ image.onload = function () {
 	drawImage()
 }
 
+function reszie(canvas, width, height){
+	var c = document.createElement('canvas');
+	c.width = width;
+	c.height = height;
+	c.getContext('2d').drawImage(canvas, 0,0,canvas.width, canvas.height, 0,0,width, height);
+	return c.toDataURL('image/png');
+}
+
 function drawImage() {
 	// ctx.clearRect(0, 0, canvas.width, canvas.height)
 	ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
@@ -24,6 +32,6 @@ nameInput.addEventListener('input', function () {
 })
 
 downloadBtn.addEventListener('click', function () {
-	downloadBtn.href = canvas.toDataURL('image/png')
+	downloadBtn.href = reszie(canvas, 2000, 1440)
 	downloadBtn.download = 'Certificate - ' + nameInput.value
 })
