@@ -42,6 +42,8 @@ nameInput.addEventListener("input", function () {
 });
 
 downloadBtn.addEventListener("click", function () {
-    downloadBtn.href = reszie(canvas, 2000, 1440);
+		const width = image.naturalWidth;
+		const height = image.naturalHeight;
+    downloadBtn.href = reszie(canvas, width, height);
     downloadBtn.download = "Certificate - " + nameInput.value;
 });
