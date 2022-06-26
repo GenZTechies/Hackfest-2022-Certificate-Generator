@@ -33,7 +33,7 @@ function drawImage() {
 	ctx.font = "70px Alex Brush";
 	ctx.fillStyle = "#13640a";
 	var textWidth = ctx.measureText(nameInput.value).width;
-	ctx.fillText(nameInput.value, canvas.width / 2 - textWidth / 2, 260);
+	ctx.fillText(nameInput.value, canvas.width / 2 - textWidth / 2, 300);
 }
 
 nameInput.addEventListener("input", function () {
