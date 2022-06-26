@@ -9,31 +9,35 @@ image.onload = function () {
 	drawImage();
 };
 
-function resize(canvas, width, height) {
-	var c = document.createElement("canvas");
-	c.width = width;
-	c.height = height;
-	c.getContext("2d").drawImage(
-			canvas,
-			0,
-			0,
-			canvas.width,
-			canvas.height,
-			0,
-			0,
-			width,
-			height
-	);
-	return c.toDataURL("image/png");
+function generateImage(width, height) {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = width;
+    canvas.height = height;
+    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+    ctx.font = "70px Alex Brush";
+    ctx.fillStyle = "#13640a";
+
+    var textWidth = ctx.measureText(nameInput.value).width;
+    var textPosition = image.naturalHeight / 2 - 125;
+
+    ctx.fillText(nameInput.value, canvas.width / 2 - textWidth / 2, textPosition);
+    ctx.imageSmoothingEnabled = false;
+
+    return canvas.toDataURL("image/png");
 }
 
 function drawImage() {
-	// ctx.clearRect(0, 0, canvas.width, canvas.height)
 	ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
 	ctx.font = "70px Alex Brush";
 	ctx.fillStyle = "#13640a";
+
 	var textWidth = ctx.measureText(nameInput.value).width;
-	ctx.fillText(nameInput.value, canvas.width / 2 - textWidth / 2, 300);
+    var textPosition = canvas.height / 2 - 50;
+
+	ctx.fillText(nameInput.value, canvas.width / 2 - textWidth / 2, textPosition);
 }
 
 nameInput.addEventListener("input", function () {
@@ -41,10 +45,6 @@ nameInput.addEventListener("input", function () {
 });
 
 downloadBtn.addEventListener("click", function () {
-	const natWidth = image.naturalWidth;
-	console.log(natWidth)
-	const natHeight = image.naturalHeight;
-	console.log(natHeight)
-	downloadBtn.href = resize(canvas, natWidth, natHeight);
+	downloadBtn.href = generateImage(image.naturalWidth, image.naturalHeight);
 	downloadBtn.download = "Certificate - " + nameInput.value;
 });
