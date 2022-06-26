@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script src="https://cdn.tailwindcss.com"></script>
-        <title>Certificate Generator</title>
-        <style>
-            @font-face {
-                font-family: "Alex Brush", cursive;
-                src: url("/AlexBrush-Regular.ttf");
-            }
-        </style>
-    </head>
-
-    <body>
-        <div class="">
-            <h1>Certificate Generator</h1>
-            <label>
-                Name:
-                <input id="name" type="text" class="outline" />
-            </label>
-            <a href="#" class="rounded-[10px]" id="download-btn">Download</a>
-            <canvas id="canvas" height="705px" width="1000px"></canvas>
-        </div>
-        
-        <script src="script.js"></script>
-    </body>
+	<head>
+			<meta charset="UTF-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+			<script src="https://cdn.tailwindcss.com"></script>
+			<title>Certificate Generator</title>
+			<style>
+					@font-face {
+							font-family: "Alex Brush", cursive;
+							src: url("/AlexBrush-Regular.ttf");
+					}
+			</style>
+	</head>
+	<body>
+		<div class="mx-auto text-center items-center mt-8">
+			<h1>Certificate Generator</h1>
+			<div class="">
+				<label>Hacker's Name:</label>
+				<input id="name" type="text" class="rounded-[5px] outline h-[30px]" />
+				<a href="#" class="rounded-[5px] outline px-[20px] py-[5px]" id="download-btn">Download</a>
+			</div>
+			<canvas id="canvas" height="605px" width="900px" class="mx-auto mt-8"></canvas>
+		</div>
+		
+		<script src="script.js"></script>
+	</body>
 </html>
