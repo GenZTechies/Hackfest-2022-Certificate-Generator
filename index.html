@@ -4,23 +4,33 @@
 			<meta charset="UTF-8" />
 			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 			<script src="https://cdn.tailwindcss.com"></script>
+			<link rel="preconnect" href="https://fonts.googleapis.com">
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 			<title>Certificate Generator</title>
 			<style>
 					@font-face {
 							font-family: "Alex Brush", cursive;
 							src: url("/AlexBrush-Regular.ttf");
 					}
+					.custom-font{
+						font-family: 'Roboto', sans-serif;
+					}
 			</style>
 	</head>
 	<body>
 		<div class="mx-auto text-center items-center mt-8">
-			<h1>Certificate Generator</h1>
+			<h1 class="bg-clip-text text-transparent bg-gradient-to-l from-red-500 to-blue-500 text-[40px]">GZT Hackathon Certificate Generator</h1>
 			<div class="">
-				<label>Hacker's Name:</label>
+				<label class="bg-clip-text text-transparent bg-gradient-to-l from-red-500 to-blue-500 text-[25px] pr-[20px] pt-[8px]">Hacker's Name:</label>
 				<input id="name" type="text" class="rounded-[5px] outline h-[30px]" />
-				<a href="#" class="rounded-[5px] outline px-[20px] py-[5px]" id="download-btn">Download</a>
+				<a href="#" id="download-btn" class="ml-[4px]">
+					<button class="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-600 duration-300 px-7 py-[5px] rounded-[5px] text-white">
+						Download
+					</button>
+				</a>
 			</div>
-			<canvas id="canvas" height="605px" width="900px" class="mx-auto mt-8"></canvas>
+			<canvas id="canvas" height="707px" width="1000px" class="mx-auto mt-8"></canvas>
 		</div>
 		
 		<script src="script.js"></script>

@@ -6,35 +6,34 @@ const downloadBtn = document.getElementById("download-btn");
 const image = new Image();
 image.src = "certificate.png";
 image.onload = function () {
-    drawImage();
+	drawImage();
 };
 
-function reszie(canvas, width, height) {
-    var c = document.createElement("canvas");
-    c.width = width;
-    c.height = height;
-    c.getContext("2d").drawImage(
-        canvas,
-        0,
-        0,
-        canvas.width,
-        canvas.height,
-        0,
-        0,
-        width,
-        height
-    );
-    return c.toDataURL("image/png");
+function resize(canvas, width, height) {
+	var c = document.createElement("canvas");
+	c.width = width;
+	c.height = height;
+	c.getContext("2d").drawImage(
+			canvas,
+			0,
+			0,
+			canvas.width,
+			canvas.height,
+			0,
+			0,
+			width,
+			height
+	);
+	return c.toDataURL("image/png");
 }
 
 function drawImage() {
-    // ctx.clearRect(0, 0, canvas.width, canvas.height)
-    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-    ctx.font = "70px Alex Brush";
-    ctx.fillStyle = "#13640a";
-    var textWidth = ctx.measureText(nameInput.value).width;
-    ctx.fillText(nameInput.value, canvas.width / 2 - textWidth / 2, 300);
-    ctx.imageSmoothingEnabled = false;
+	// ctx.clearRect(0, 0, canvas.width, canvas.height)
+	ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+	ctx.font = "70px Alex Brush";
+	ctx.fillStyle = "#13640a";
+	var textWidth = ctx.measureText(nameInput.value).width;
+	ctx.fillText(nameInput.value, canvas.width / 2 - textWidth / 2, 260);
 }
 
 nameInput.addEventListener("input", function () {
@@ -42,8 +41,10 @@ nameInput.addEventListener("input", function () {
 });
 
 downloadBtn.addEventListener("click", function () {
-		const width = image.naturalWidth;
-		const height = image.naturalHeight;
-    downloadBtn.href = reszie(canvas, width, height);
-    downloadBtn.download = "Certificate - " + nameInput.value;
+	const natWidth = image.naturalWidth;
+	console.log(natWidth)
+	const natHeight = image.naturalHeight;
+	console.log(natHeight)
+	downloadBtn.href = resize(canvas, natWidth, natHeight);
+	downloadBtn.download = "Certificate - " + nameInput.value;
 });
