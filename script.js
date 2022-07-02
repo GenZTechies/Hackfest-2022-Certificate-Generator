@@ -15,9 +15,15 @@ var HackersName = "";
 var HackersEmail = "";
 
 // Import Hackers Data from hackers.json
-const data = JSON.parse(
-    fetch("https://raw.githubusercontent.com/Hackers-Portal/hackers.json/master/hackers.json")
-
+var data = [];
+fetch("hackers.json")
+    .then((response) => response.json())
+    .then((data) => {
+        this.data = data;
+    })
+    .catch((error) => {
+        console.log(error);
+    });
 
 const getName = (email) => {
     HackersEmail = document.getElementById("email").value;
@@ -71,8 +77,11 @@ function generateImage(width, height) {
 }
 
 downloadBtn.addEventListener("click", function () {
-    if(HackersName !== "") {
-        downloadBtn.href = generateImage(image.naturalWidth, image.naturalHeight);
+    if (HackersName !== "") {
+        downloadBtn.href = generateImage(
+            image.naturalWidth,
+            image.naturalHeight
+        );
         downloadBtn.download = "Certificate - " + HackersName + ".png";
     }
 });
