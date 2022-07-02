@@ -1,5 +1,3 @@
-alert("Loading... Please wait");
-
 // Modals
 const menu = document.getElementById("menu");
 const error = document.getElementById("error");
@@ -55,7 +53,7 @@ const getName = () => {
 const image = new Image();
 image.src = "certificate.png";
 image.onload = () => {
-    alert("Loaded... Let's goooo! 🚀🚀");
+    document.getElementById("loading").innerText = "Loaded... Let's goooo 🚀🚀🚀"
 }
 
 function generateImage(width, height) {
