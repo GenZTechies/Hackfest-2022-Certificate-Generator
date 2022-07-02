@@ -1,22 +1,31 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-const nameInput = document.getElementById("name");
 const downloadBtn = document.getElementById("download-btn");
-
-const haystack = ['adetunji.com', 'bamidele.com'];
+const nameInput = document.getElementById('name')
+const haystack = ['a', 'bamidele.com'];
 const menu = document.getElementById("menu");
+const downloadModal = document.getElementById("downloading")
+const text = document.getElementById('name');
+const element = document.getElementById("error");
 
-const emailCheck = (needle) => {
-    if( haystack.includes(needle)){
+const getName = (needle) => {
+    if(haystack.includes(needle)){
         console.log("This email exists")
-        showMenu(true);
+        showModal(true);
+        downloadModalToggle();
     }else{
         console.log("This email does not exist")
+        element.classList.remove("hidden");
     }
+    return needle;
 }
 
-const showMenu = (flag) => {
+const showModal = () => {
     menu.classList.toggle("hidden");
+};
+
+const downloadModalToggle = () => {
+    downloadModal.classList.remove("hidden");
 };
 
 const image = new Image();
@@ -61,6 +70,8 @@ nameInput.addEventListener("input", function () {
 });
 
 downloadBtn.addEventListener("click", function () {
-	downloadBtn.href = generateImage(image.naturalWidth, image.naturalHeight);
-	downloadBtn.download = "Certificate - " + nameInput.value;
+    setTimeout(() => {
+        downloadBtn.href = generateImage(image.naturalWidth, image.naturalHeight);
+	    downloadBtn.download = "Certificate - " + nameInput.value;
+    }, 3000);
 });

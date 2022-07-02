@@ -24,27 +24,42 @@
 			<div class="">
 				<label class="bg-clip-text text-transparent bg-gradient-to-l from-red-500 to-blue-500 text-[25px] pr-[20px] pt-[8px]">Hacker's Name:</label>
 				<input id="name" type="text" class="rounded-[5px] outline h-[30px]" />
-				<a href="#" id="download-btn" class="ml-[4px]">
+				<a href="#" id="download-bt" class="ml-[4px]">
 					<button class="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-600 duration-300 px-7 py-[5px] rounded-[5px] text-white">
 						Download
 					</button>
 				</a>
 			</div>
-			<canvas id="canvas" height="707px" width="1000px" class="mx-auto mt-8 hidden"></canvas>
 		</div>
-		<button onclick="emailCheck('adetunji.com')">Click me</button>
+		<canvas id="canvas" height="707px" width="1000px" class="mx-auto mt-8 hidden w-[707px] h-[1000px]"></canvas>
 		<div class="relative flex justify-center items-center">
 			<div id="menu" class="w-full h-full bg-gray-900 bg-opacity-80 top-0 fixed sticky-0">
 				<div class="2xl:container 2xl:mx-auto py-48 px-4 md:px-28 flex justify-center items-center">
 					<div class="w-96 md:w-auto dark:bg-gray-800 relative flex flex-col justify-center items-center bg-white py-16 px-4 md:px-24 xl:py-24 xl:px-36">
 						<div class="mt">
-							<h1 class="text-3xl dark:text-white lg:text-4xl font-semibold leading-7 lg:leading-9 text-center text-gray-800">Download your Certificate</h1>
-							<input type="text" name="name" id="email" placeholder="Enter your email address" class="w-full rounded-[10px] h-10 mt-4 placeholder:text-center outline-none text-center mt-[40px] mx-auto">
+							<h1 class="bg-clip-text text-transparent bg-gradient-to-l from-red-500 to-blue-500 text-3xl lg:text-4xl font-semibold leading-7 lg:leading-9 text-center">Download your GZT Hackathon 2022 Certificate</h1>
+							<input type="text" id="name" placeholder="Enter your email address" class="w-full rounded-[10px] h-10 mt-4 placeholder:text-center outline-none text-center mt-[40px] mx-auto">
 						</div>
-						<div class="mt hidden">
+						<div class="mt hidden" id="error">
 							<p class="mt-6 sm:w-80 text-base dark:text-red leading-7 text-center" style="color:red">Your email address does not exist kindly try again</p>
 						</div>
-						<button onclick="emailCheck(document.getElementById('email').textContent)" class="w-full dark:text-gray-800 dark:hover:bg-gray-100 dark:bg-white sm:w-auto mt-14 text-base leading-4 text-center text-white py-6 px-16 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 bg-gray-800 hover:bg-black">Get My Certificate</button>
+						<a href="#" id="download-btn">
+							<button onclick="getName(text.value)" class="w-full dark:text-gray-800 dark:hover:bg-gray-100 dark:bg-white sm:w-auto mt-14 text-base leading-4 text-center text-white py-6 px-16 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 bg-gray-800 hover:bg-black">Get My Certificate</button>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="relative flex justify-center items-center hidden" id="downloading">
+			<div class="w-full h-full bg-gray-900 bg-opacity-80 top-0 fixed sticky-0">
+				<div class="2xl:container 2xl:mx-auto py-48 px-4 md:px-28 flex justify-center items-center">
+					<div class="w-96 md:w-auto dark:bg-gray-800 relative flex flex-col justify-center items-center bg-white py-16 px-4 md:px-24 xl:py-24 xl:px-36">
+						<div class="mt">
+							<h1 class="text-3xl dark:text-white lg:text-4xl font-semibold leading-7 lg:leading-9 text-center text-gray-800">Your certificate should be downloading anytime soon 😉</h1>
+						</div>
+						<div class="mt">
+							<p class="mt-6 sm:w-80 text-base dark:text-red leading-7 text-center" style="color:white">If your download does not start automatically <a href="">click here</a></p>
+						</div>
 					</div>
 				</div>
 			</div>
