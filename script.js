@@ -5,7 +5,7 @@ const nameInput = document.getElementById('name')
 const haystack = ['a', 'bamidele.com'];
 const menu = document.getElementById("menu");
 const downloadModal = document.getElementById("downloading")
-const text = document.getElementById('name');
+const text = document.getElementById('check');
 const element = document.getElementById("error");
 
 const getName = (needle) => {
