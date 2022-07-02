@@ -1,8 +1,7 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-const nameInput = document.getElementById("name");
+const nameInput = NULL;
 const downloadBtn = document.getElementById("download-btn");
-
 const haystack = ['a', 'bamidele.com'];
 const menu = document.getElementById("menu");
 const text = document.getElementById('email');
