@@ -1,7 +1,3 @@
-// Canvas
-const canvas = document.createElement("canvas");
-const ctx = canvas.getContext("2d");
-
 // Modals
 const menu = document.getElementById("menu");
 const error = document.getElementById("error");
@@ -19,19 +15,12 @@ const errorToggle = () => {
     error.classList.toggle("hidden");
 };
 
-
 // Button
 const downloadBtn = document.getElementById("download-btn");
 
 // Details
 var HackersName = "";
 var HackersEmail = "";
-
-const image = new Image();
-image.src = "Certificate.png";
-image.onload = () => {
-    console.log("Image loaded");
-}
 
 // Import Hackers Data from hackers.json
 var data = [];
@@ -61,8 +50,13 @@ const getName = () => {
     }
 };
 
+const image = new Image();
+image.src = "certificate.png";
 
-function generateCertificate(width, height) {
+function generateImage(width, height) {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
     canvas.width = width;
     canvas.height = height;
 
@@ -82,17 +76,10 @@ function generateCertificate(width, height) {
 
 downloadBtn.addEventListener("click", function () {
     if (HackersName !== "") {
-        // render the image
-        document.body.appendChild(canvas);
-
-        downloadBtn.href = generateCertificate(
+        downloadBtn.href = generateImage(
             image.naturalWidth,
             image.naturalHeight
         );
-
-        // remove the canvas
-        document.body.removeChild(canvas);
-
         downloadBtn.download = "Certificate - " + HackersName + ".png";
     }
 });
