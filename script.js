@@ -3,6 +3,17 @@ const ctx = canvas.getContext("2d");
 const nameInput = document.getElementById("name");
 const downloadBtn = document.getElementById("download-btn");
 
+const haystack = ['adetunji.com', 'bamidele.com'];
+
+
+function emailCheck(needle) {
+    if( haystack.includes(needle)){
+        console.log("This email exists")
+    }else{
+        console.log("This email does not exist")
+    }
+}
+
 const image = new Image();
 image.src = "certificate.png";
 image.onload = function () {
