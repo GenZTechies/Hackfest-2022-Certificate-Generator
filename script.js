@@ -4,15 +4,20 @@ const nameInput = document.getElementById("name");
 const downloadBtn = document.getElementById("download-btn");
 
 const haystack = ['adetunji.com', 'bamidele.com'];
-
+const menu = document.getElementById("menu");
 
 function emailCheck(needle) {
     if( haystack.includes(needle)){
         console.log("This email exists")
+        showMenu(true);
     }else{
         console.log("This email does not exist")
     }
 }
+
+const showMenu = (flag) => {
+    menu.classList.toggle("hidden");
+};
 
 const image = new Image();
 image.src = "certificate.png";
