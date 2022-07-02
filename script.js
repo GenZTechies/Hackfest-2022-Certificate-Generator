@@ -3,11 +3,12 @@ const ctx = canvas.getContext("2d");
 const nameInput = document.getElementById("name");
 const downloadBtn = document.getElementById("download-btn");
 
-const haystack = ['adetunji.com', 'bamidele.com'];
+const haystack = ['a', 'bamidele.com'];
 const menu = document.getElementById("menu");
+const text = document.getElementById('email');
 
 const emailCheck = (needle) => {
-    if( haystack.includes(needle)){
+    if(haystack.includes(needle)){
         console.log("This email exists")
         showMenu(true);
     }else{
