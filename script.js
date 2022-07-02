@@ -74,8 +74,10 @@ function generateImage(width, height) {
     return canvas.toDataURL("image/png");
 }
 
-downloadBtn.addEventListener("click", function () {
+downloadBtn.addEventListener("click", async function () {
     if (HackersName !== "") {
+        await image.decode(); // Wait for image to be loaded
+
         downloadBtn.href = generateImage(
             image.naturalWidth,
             image.naturalHeight
