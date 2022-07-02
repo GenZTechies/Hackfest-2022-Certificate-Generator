@@ -6,7 +6,7 @@ const downloadBtn = document.getElementById("download-btn");
 const haystack = ['adetunji.com', 'bamidele.com'];
 const menu = document.getElementById("menu");
 
-function emailCheck(needle) {
+const emailCheck = (needle) => {
     if( haystack.includes(needle)){
         console.log("This email exists")
         showMenu(true);
