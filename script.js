@@ -14,17 +14,10 @@ const downloadBtn = document.getElementById("download-btn");
 var HackersName = "";
 var HackersEmail = "";
 
-// Data
-const data = [
-    {
-        name: "John Doe",
-        email: "tolu@hello.com",
-    },
-    {
-        name: "Jane Doe",
-        email: "a"
-    }
-];
+// Import Hackers Data from hackers.json
+const data = JSON.parse(
+    fetch("https://raw.githubusercontent.com/Hackers-Portal/hackers.json/master/hackers.json")
+
 
 const getName = (email) => {
     HackersEmail = document.getElementById("email").value;
@@ -65,11 +58,11 @@ function generateImage(width, height) {
     canvas.height = height;
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
-    ctx.font = "70px Alex Brush";
-    ctx.fillStyle = "#13640a";
+    ctx.font = "900 italic 250px Charis SIL";
+    ctx.fillStyle = "black";
 
     var textWidth = ctx.measureText(HackersName).width;
-    var textPosition = image.naturalHeight / 2;
+    var textPosition = image.naturalHeight / 2 + 150;
 
     ctx.fillText(HackersName, canvas.width / 2 - textWidth / 2, textPosition);
     ctx.imageSmoothingEnabled = false;
