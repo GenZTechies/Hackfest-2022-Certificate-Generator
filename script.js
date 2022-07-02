@@ -1,5 +1,5 @@
 // Canvas
-const canvas = document.getElementById("canvas");
+const canvas = document.createElement("canvas");
 const ctx = canvas.getContext("2d");
 
 // Modals
@@ -57,11 +57,10 @@ const errorToggle = () => {
 const image = new Image();
 image.src = "Certificate.png";
 
-function generateImage(width, height) {
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
+function generateCertificate(width, height) {
     canvas.width = width;
     canvas.height = height;
+
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
     ctx.font = "900 italic 250px Charis SIL";
@@ -78,10 +77,17 @@ function generateImage(width, height) {
 
 downloadBtn.addEventListener("click", function () {
     if (HackersName !== "") {
-        downloadBtn.href = generateImage(
+        // render the image
+        document.body.appendChild(canvas);
+
+        downloadBtn.href = generateCertificate(
             image.naturalWidth,
             image.naturalHeight
         );
+
+        // remove the canvas
+        document.body.removeChild(canvas);
+
         downloadBtn.download = "Certificate - " + HackersName + ".png";
     }
 });
