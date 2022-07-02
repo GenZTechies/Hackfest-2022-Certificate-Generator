@@ -1,3 +1,5 @@
+alert("Loading... Please wait");
+
 // Modals
 const menu = document.getElementById("menu");
 const error = document.getElementById("error");
@@ -52,6 +54,9 @@ const getName = () => {
 
 const image = new Image();
 image.src = "certificate.png";
+image.onload = () => {
+    alert("Loaded... Let's goooo! 🚀🚀");
+}
 
 function generateImage(width, height) {
     const canvas = document.createElement("canvas");
@@ -74,10 +79,8 @@ function generateImage(width, height) {
     return canvas.toDataURL("image/png");
 }
 
-downloadBtn.addEventListener("click", async function () {
+downloadBtn.addEventListener("click", function () {
     if (HackersName !== "") {
-        await image.decode(); // Wait for image to be loaded
-
         downloadBtn.href = generateImage(
             image.naturalWidth,
             image.naturalHeight
