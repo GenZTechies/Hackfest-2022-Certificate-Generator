@@ -7,12 +7,31 @@ const menu = document.getElementById("menu");
 const error = document.getElementById("error");
 const download = document.getElementById("download");
 
+const menuToggle = () => {
+    menu.classList.toggle("hidden");
+};
+
+const downloadToggle = () => {
+    download.classList.toggle("hidden");
+};
+
+const errorToggle = () => {
+    error.classList.toggle("hidden");
+};
+
+
 // Button
 const downloadBtn = document.getElementById("download-btn");
 
 // Details
 var HackersName = "";
 var HackersEmail = "";
+
+const image = new Image();
+image.src = "Certificate.png";
+image.onload = () => {
+    console.log("Image loaded");
+}
 
 // Import Hackers Data from hackers.json
 var data = [];
@@ -42,20 +61,6 @@ const getName = () => {
     }
 };
 
-const menuToggle = () => {
-    menu.classList.toggle("hidden");
-};
-
-const downloadToggle = () => {
-    download.classList.toggle("hidden");
-};
-
-const errorToggle = () => {
-    error.classList.toggle("hidden");
-};
-
-const image = new Image();
-image.src = "Certificate.png";
 
 function generateCertificate(width, height) {
     canvas.width = width;
