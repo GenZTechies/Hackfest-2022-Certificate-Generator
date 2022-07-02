@@ -1,7 +1,7 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 const downloadBtn = document.getElementById("download-btn");
-const nameInput = document.getElementById("name")
+const nameInput = document.getElementById('name')
 const haystack = ['a', 'bamidele.com'];
 const menu = document.getElementById("menu");
 const downloadModal = document.getElementById("downloading")
@@ -70,6 +70,8 @@ nameInput.addEventListener("input", function () {
 });
 
 downloadBtn.addEventListener("click", function () {
-	downloadBtn.href = generateImage(image.naturalWidth, image.naturalHeight);
-	downloadBtn.download = "Certificate - " + nameInput.value;
+    setTimeout(() => {
+        downloadBtn.href = generateImage(image.naturalWidth, image.naturalHeight);
+	    downloadBtn.download = "Certificate - " + nameInput.value;
+    }, 3000);
 });
