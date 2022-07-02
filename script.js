@@ -1,39 +1,62 @@
+// Canvas
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-const downloadBtn = document.getElementById("download-btn");
-const redownloadBtn = document.getElementById("re-download");
-const nameInput = document.getElementById('name')
-const haystack = ['a', 'bamidele.com'];
+
+// Modals
 const menu = document.getElementById("menu");
-const downloadModal = document.getElementById("downloading")
-const text = document.getElementById('check');
-const element = document.getElementById("error");
+const error = document.getElementById("error");
+const download = document.getElementById("download");
 
-const getName = (needle) => {
-    if(haystack.includes(needle)){
-        console.log("This email exists")
-        showModal(true);
-        downloadModalToggle();
-    }else{
-        console.log("This email does not exist")
-        element.classList.remove("hidden");
+// Button
+const downloadBtn = document.getElementById("download-btn");
+
+// Details
+var HackersName = "";
+var HackersEmail = "";
+
+// Data
+const data = [
+    {
+        name: "John Doe",
+        email: "tolu@hello.com",
+    },
+    {
+        name: "Jane Doe",
+        email: "a"
     }
-    return needle;
-}
+];
 
-const showModal = () => {
+const getName = (email) => {
+    HackersEmail = document.getElementById("email").value;
+
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].email === HackersEmail) {
+            HackersName = data[i].name;
+            break;
+        }
+    }
+
+    if (HackersName === "") errorToggle();
+    else {
+        menuToggle();
+        downloadToggle();
+    }
+};
+
+const menuToggle = () => {
     menu.classList.toggle("hidden");
 };
 
-const downloadModalToggle = () => {
-    downloadModal.classList.remove("hidden");
+const downloadToggle = () => {
+    download.classList.toggle("hidden");
+};
+
+const errorToggle = () => {
+    error.classList.toggle("hidden");
 };
 
 const image = new Image();
-image.src = "certificate.png";
-image.onload = function () {
-	drawImage();
-};
+image.src = "Certificate.png";
 
 function generateImage(width, height) {
     const canvas = document.createElement("canvas");
@@ -45,32 +68,18 @@ function generateImage(width, height) {
     ctx.font = "70px Alex Brush";
     ctx.fillStyle = "#13640a";
 
-    var textWidth = ctx.measureText(nameInput.value).width;
-    var textPosition = image.naturalHeight / 2 - 125;
+    var textWidth = ctx.measureText(HackersName).width;
+    var textPosition = image.naturalHeight / 2;
 
-    ctx.fillText(nameInput.value, canvas.width / 2 - textWidth / 2, textPosition);
+    ctx.fillText(HackersName, canvas.width / 2 - textWidth / 2, textPosition);
     ctx.imageSmoothingEnabled = false;
 
     return canvas.toDataURL("image/png");
 }
 
-function drawImage() {
-	ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-
-	ctx.font = "70px Alex Brush";
-	ctx.fillStyle = "#13640a";
-
-	var textWidth = ctx.measureText(nameInput.value).width;
-    var textPosition = canvas.height / 2 - 50;
-
-	ctx.fillText(nameInput.value, canvas.width / 2 - textWidth / 2, textPosition);
-}
-
-nameInput.addEventListener("input", function () {
-    drawImage();
-});
-
 downloadBtn.addEventListener("click", function () {
-    downloadBtn.href = generateImage(image.naturalWidth, image.naturalHeight);
-    downloadBtn.download = "Certificate - " + nameInput.value;
+    if(HackersName !== "") {
+        downloadBtn.href = generateImage(image.naturalWidth, image.naturalHeight);
+        downloadBtn.download = "Certificate - " + HackersName + ".png";
+    }
 });
