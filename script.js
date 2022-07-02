@@ -25,7 +25,7 @@ fetch("hackers.json")
         console.log(error);
     });
 
-const getName = (email) => {
+const getName = () => {
     HackersEmail = document.getElementById("email").value;
 
     for (let i = 0; i < data.length; i++) {
