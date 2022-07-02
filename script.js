@@ -1,11 +1,12 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 const downloadBtn = document.getElementById("download-btn");
+const redownloadBtn = document.getElementById("re-download");
 const nameInput = document.getElementById('name')
 const haystack = ['a', 'bamidele.com'];
 const menu = document.getElementById("menu");
 const downloadModal = document.getElementById("downloading")
-const text = document.getElementById('name');
+const text = document.getElementById('check');
 const element = document.getElementById("error");
 
 const getName = (needle) => {
@@ -70,8 +71,6 @@ nameInput.addEventListener("input", function () {
 });
 
 downloadBtn.addEventListener("click", function () {
-    setTimeout(() => {
-        downloadBtn.href = generateImage(image.naturalWidth, image.naturalHeight);
-	    downloadBtn.download = "Certificate - " + nameInput.value;
-    }, 3000);
+    downloadBtn.href = generateImage(image.naturalWidth, image.naturalHeight);
+    downloadBtn.download = "Certificate - " + nameInput.value;
 });
