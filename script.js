@@ -1,11 +1,19 @@
-// Canvas
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
-
 // Modals
 const menu = document.getElementById("menu");
 const error = document.getElementById("error");
 const download = document.getElementById("download");
+
+const menuToggle = () => {
+    menu.classList.toggle("hidden");
+};
+
+const downloadToggle = () => {
+    download.classList.toggle("hidden");
+};
+
+const errorToggle = () => {
+    error.classList.toggle("hidden");
+};
 
 // Button
 const downloadBtn = document.getElementById("download-btn");
@@ -42,26 +50,19 @@ const getName = () => {
     }
 };
 
-const menuToggle = () => {
-    menu.classList.toggle("hidden");
-};
-
-const downloadToggle = () => {
-    download.classList.toggle("hidden");
-};
-
-const errorToggle = () => {
-    error.classList.toggle("hidden");
-};
-
 const image = new Image();
-image.src = "Certificate.png";
+image.src = "certificate.png";
+image.onload = () => {
+    document.getElementById("loading").innerText = "Loaded... Let's goooo 🚀🚀🚀"
+}
 
 function generateImage(width, height) {
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
+
     canvas.width = width;
     canvas.height = height;
+
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
     ctx.font = "900 italic 250px Charis SIL";
