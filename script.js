@@ -1,10 +1,10 @@
 // Modals
-const menu = document.getElementById("menu");
+const modal = document.getElementById("modal");
 const error = document.getElementById("error");
 const download = document.getElementById("download");
 
-const menuToggle = () => {
-    menu.classList.toggle("hidden");
+const modalToggle = () => {
+    modal.classList.toggle("hidden");
 };
 
 const downloadToggle = () => {
