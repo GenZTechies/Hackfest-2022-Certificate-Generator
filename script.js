@@ -2,6 +2,7 @@
 const modal = document.getElementById("modal");
 const error = document.getElementById("error");
 const download = document.getElementById("download");
+const get_my_certificate = document.getElementById("get-my-certificate");
 
 const modalToggle = () => {
     modal.classList.toggle("hidden");
@@ -54,6 +55,7 @@ const image = new Image();
 image.src = "certificate.png";
 image.onload = () => {
     document.getElementById("loading").innerText = "Loaded... Let's goooo 🚀🚀🚀"
+    document.getElementById("get-my-certificate").removeAttribute('disabled')
 }
 
 function generateImage(width, height) {
